@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Timesheet Flow - Convert Unstructured Timesheets to Structured Formats
+    </title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://js.stripe.com/v3/"></script>
+    <link rel="stylesheet" href="style.css?v=1.0.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+  </head>
+  <body class="bg-gray-100 font-sans pt-20">
+    <!-- Header -->
+    <header
+      id="header"
+      class="bg-white shadow-md fixed top-0 left-0 w-full transition-all duration-500 ease-in-out z-50"
+    >
+      <div
+        class="container mx-auto px-4 py-6 flex justify-between items-center"
+      >
+        <img src="logo.webp" alt="Timesheet Flow Logo" class="h-10 w-auto" />
+        <button
+          id="menu-toggle"
+          class="md:hidden text-gray-600 focus:outline-none"
+        >
+          <i class="fas fa-bars text-2xl"></i>
+        </button>
+        <nav id="nav-menu" class="hidden md:flex space-x-8">
+          <a href="#features" class="text-gray-600 hover:text-gray-800"
+            >Features</a
+          >
+          <a href="#pricing" class="text-gray-600 hover:text-gray-800"
+            >Pricing</a
+          >
+          <a href="#join-us" class="text-gray-600 hover:text-gray-800"
+            >Join Us</a
+          >
+          <a href="#contact" class="text-gray-600 hover:text-gray-800"
+            >Contact</a
+          >
+        </nav>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section
+      class="bg-gradient-to-r from-[#09abe7] to-[#2c4e9b] text-white py-20"
+    >
+      <div class="container mx-auto px-4 text-center">
+        <h2 class="text-4xl font-bold mb-4">
+          Streamline Your Timesheet Processing with Timesheet Flow
+        </h2>
+        <p class="text-xl mb-8">
+          Upload unstructured timesheets from handwritten notes, photos, or
+          scanned documents and convert them into structured formats like Excel,
+          CSV, and JSON effortlessly.
+        </p>
+        <button
+          id="hero-checkout-button"
+          class="btn-hover bg-[#09abe7] text-white px-8 py-3 rounded-full font-semibold hover:bg-[#2c4e9b] transition"
+          role="button"
+        >
+          <i class="fas fa-arrow-right mr-2"></i>Get Started
+        </button>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-20 bg-white fade-in">
+      <div class="container mx-auto px-4">
+        <h3 class="text-3xl font-bold text-center mb-12 text-[#2c4e9b]">
+          Key Features
+        </h3>
+        <div class="grid md:grid-cols-3 gap-8">
+          <div class="feature-card text-center">
+            <div
+              class="bg-blue-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4"
+            >
+              <svg
+                class="w-8 h-8 text-blue-600"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                ></path>
+              </svg>
+            </div>
+            <h4 class="text-xl font-semibold mb-2">
+              Upload Unstructured Timesheets
+            </h4>
+            <p class="text-gray-600">
+              Easily upload timesheets from various sources including
+              handwritten notes, photos, scanned documents, and more.
+            </p>
+          </div>
+          <div class="feature-card text-center">
+            <div
+              class="bg-green-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4"
+            >
+              <svg
+                class="w-8 h-8 text-green-600"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
+                ></path>
+              </svg>
+            </div>
+            <h4 class="text-xl font-semibold mb-2">
+              Convert to Multiple Formats
+            </h4>
+            <p class="text-gray-600">
+              Transform your unstructured timesheets into structured formats
+              such as Excel, CSV, and JSON for easy integration and analysis.
+            </p>
+          </div>
+          <div class="feature-card text-center">
+            <div
+              class="bg-purple-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4"
+            >
+              <svg
+                class="w-8 h-8 text-purple-600"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
+                ></path>
+              </svg>
+            </div>
+            <h4 class="text-xl font-semibold mb-2">
+              Secure & Automated Processing
+            </h4>
+            <p class="text-gray-600">
+              Process timesheets securely with automated conversion, ensuring
+              accuracy and protecting your data.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-20 bg-gray-100 fade-in">
+      <div class="container mx-auto px-4">
+        <h3 class="text-3xl font-bold text-center mb-12 text-[#2c4e9b]">
+          Pricing
+        </h3>
+        <div class="grid md:grid-cols-2 gap-8">
+          <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+            <div class="px-6 py-8">
+              <h4 class="text-2xl font-bold text-center mb-4">
+                Individual / Small Business
+              </h4>
+              <div class="text-center mb-6">
+                <span class="text-4xl font-bold">€79</span>
+              </div>
+              <ul class="mb-6 text-center">
+                <li class="flex items-center justify-center mb-2">
+                  <i class="fas fa-check text-green-600 mr-2"></i>Upload &
+                  Convert Up to 100 Timesheets/Month
+                </li>
+                <li class="flex items-center justify-center mb-2">
+                  <i class="fas fa-check text-green-600 mr-2"></i>Excel, CSV,
+                  JSON Formats
+                </li>
+                <li class="flex items-center justify-center mb-2">
+                  <i class="fas fa-check text-green-600 mr-2"></i>Email Support
+                </li>
+                <li class="flex items-center justify-center mb-2">
+                  <i class="fas fa-check text-green-600 mr-2"></i>Basic
+                  Analytics
+                </li>
+              </ul>
+              <button
+                id="checkout-button"
+                class="btn-hover w-full bg-[#09abe7] text-white py-3 rounded-lg font-semibold hover:bg-[#2c4e9b] transition flex items-center justify-center"
+                style="text-decoration: none"
+              >
+                <i class="fas fa-credit-card mr-2"></i>Buy Now
+              </button>
+            </div>
+          </div>
+          <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+            <div class="px-6 py-8">
+              <h4 class="text-2xl font-bold text-center mb-4">
+                Enterprise / Large Teams
+              </h4>
+              <div class="text-center mb-6">
+                <span class="text-4xl font-bold">Custom Pricing</span>
+              </div>
+              <ul class="mb-6 text-center">
+                <li class="flex items-center justify-center mb-2">
+                  <i class="fas fa-check text-green-600 mr-2"></i>Unlimited
+                  Timesheet Processing
+                </li>
+                <li class="flex items-center justify-center mb-2">
+                  <i class="fas fa-check text-green-600 mr-2"></i>All Formats +
+                  Custom Integrations
+                </li>
+                <li class="flex items-center justify-center mb-2">
+                  <i class="fas fa-check text-green-600 mr-2"></i>Dedicated
+                  Account Manager
+                </li>
+                <li class="flex items-center justify-center mb-2">
+                  <i class="fas fa-check text-green-600 mr-2"></i>Priority
+                  Support & API Access
+                </li>
+              </ul>
+              <button
+                class="btn-hover w-full bg-[#09abe7] text-white py-3 rounded-lg font-semibold hover:bg-[#2c4e9b] transition"
+              >
+                <i class="fas fa-envelope mr-2"></i>Contact Sales
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Mailing List Section -->
+    <section id="join-us" class="py-20 bg-white fade-in">
+      <div class="container mx-auto px-4 text-center">
+        <h3 class="text-3xl font-bold mb-8 text-[#2c4e9b]">Join Us</h3>
+        <p class="text-gray-600 mb-8">
+          Stay updated on the latest features and get early access to new tools
+          for timesheet processing.
+        </p>
+        <form
+          id="subscribe-form"
+          action="#"
+          method="post"
+          class="max-w-md mx-auto"
+          target="hidden-iframe"
+        >
+          <input
+            type="email"
+            name="EMAIL"
+            placeholder="Enter your email"
+            class="w-full px-4 py-2 border rounded-lg mb-4"
+            required
+          />
+          <button
+            type="submit"
+            class="btn-hover w-full bg-[#09abe7] text-white py-3 rounded-lg font-semibold hover:bg-[#2c4e9b] transition"
+          >
+            <i class="fas fa-paper-plane mr-2"></i>Subscribe
+          </button>
+        </form>
+        <iframe name="hidden-iframe" style="display: none"></iframe>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-gray-100 fade-in">
+      <div class="container mx-auto px-4 text-center">
+        <h3 class="text-3xl font-bold mb-8 text-[#2c4e9b]">Contact Us</h3>
+        <p class="text-gray-600 mb-8">
+          Have questions? Reach out to us for more information.
+        </p>
+        <a
+          href="mailto:info@timesheetflow.com"
+          class="btn-hover bg-[#09abe7] text-white px-8 py-3 rounded-full font-semibold hover:bg-[#2c4e9b] transition inline-flex items-center mr-4"
+          role="button"
+        >
+          <i class="fas fa-envelope mr-2"></i>Email Us
+        </a>
+        <a
+          href="https://www.linkedin.com/in/chrisdeguara/"
+          target="_blank"
+          aria-label="LinkedIn"
+          class="btn-hover bg-[#2c4e9b] text-white px-8 py-3 rounded-full font-semibold transition inline-flex items-center linkedin-contact"
+        >
+          <i class="fab fa-linkedin mr-2"></i>LinkedIn
+        </a>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+      <div class="container mx-auto px-4 text-center">
+        <p>&copy; 2025 Timesheet Flow. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script src="script.js?v=1.0.0"></script>
+  </body>
+</html>
