@@ -8,7 +8,6 @@
     </title>
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://js.stripe.com/v3/"></script>
     <link rel="stylesheet" href="style.css?v=1.0.0" />
     <link
       rel="stylesheet"
@@ -70,13 +69,13 @@
           scanned documents and convert them into structured formats like Excel,
           CSV, and JSON effortlessly.
         </p>
-        <button
-          id="hero-checkout-button"
+        <a
+          href="#pricing"
           class="btn-hover bg-[#09abe7] text-white px-8 py-3 rounded-full font-semibold hover:bg-[#2c4e9b] transition"
           role="button"
         >
           <i class="fas fa-arrow-right mr-2"></i>Get Started
-        </button>
+        </a>
       </div>
     </section>
 
@@ -175,72 +174,100 @@
         <h3 class="text-3xl font-bold text-center mb-12 text-[#2c4e9b]">
           Pricing
         </h3>
-        <div class="grid md:grid-cols-2 gap-8">
+        <div class="grid md:grid-cols-3 gap-8 items-start">
           <div class="bg-white rounded-lg shadow-lg overflow-hidden">
             <div class="px-6 py-8">
-              <h4 class="text-2xl font-bold text-center mb-4">
-                Individual / Small Business
-              </h4>
+              <h4 class="text-2xl font-bold text-center mb-4">Starter</h4>
+              <p class="text-gray-600 mb-4 text-center">
+                Perfect for small teams tired of manual data entry.
+              </p>
               <div class="text-center mb-6">
-                <span class="text-4xl font-bold">€79</span>
+                <span class="text-4xl font-bold">€49</span
+                ><span style="font-size: 0.8em; color: gray">/ month</span>
               </div>
               <ul class="mb-6 text-center">
-                <li class="flex items-center justify-center mb-2">
-                  <i class="fas fa-check text-green-600 mr-2"></i>Upload &
-                  Convert Up to 100 Timesheets/Month
-                </li>
-                <li class="flex items-center justify-center mb-2">
-                  <i class="fas fa-check text-green-600 mr-2"></i>Excel, CSV,
-                  JSON Formats
-                </li>
-                <li class="flex items-center justify-center mb-2">
-                  <i class="fas fa-check text-green-600 mr-2"></i>Email Support
-                </li>
-                <li class="flex items-center justify-center mb-2">
-                  <i class="fas fa-check text-green-600 mr-2"></i>Basic
-                  Analytics
-                </li>
+                <li class="mb-2">Up to 50 Timesheets / month</li>
+                <li class="mb-2">€0.98 per extra sheet</li>
+                <li class="mb-2">Standard Email Support</li>
               </ul>
-              <button
-                id="checkout-button"
+              <p class="text-sm text-gray-600 mb-4 text-center">
+                Replaces ~13 hours of admin work.
+              </p>
+              <a
+                href="https://app.timesheetflow.com"
                 class="btn-hover w-full bg-[#09abe7] text-white py-3 rounded-lg font-semibold hover:bg-[#2c4e9b] transition flex items-center justify-center"
                 style="text-decoration: none"
               >
-                <i class="fas fa-credit-card mr-2"></i>Buy Now
-              </button>
+                <i class="fas fa-arrow-right mr-2"></i>Start Free Trial
+              </a>
+            </div>
+          </div>
+          <div class="relative md:scale-105 md:shadow-2xl">
+            <div
+              class="absolute -top-3 left-1/2 transform -translate-x-1/2 z-10"
+            >
+              <span
+                class="bg-[#09abe7] text-white px-3 py-1 rounded-full text-xs font-bold"
+                >MOST POPULAR</span
+              >
+            </div>
+            <div
+              class="bg-white rounded-lg shadow-lg overflow-hidden border-2 border-[#09abe7]"
+            >
+              <div class="px-6 py-8 pt-12">
+                <h4 class="text-2xl font-bold text-center mb-4">
+                  Professional
+                </h4>
+                <p class="text-gray-600 mb-4 text-center">
+                  Automate your entire weekly payroll workflow.
+                </p>
+                <div class="text-center mb-6">
+                  <span class="text-4xl font-bold">€149</span
+                  ><span style="font-size: 0.8em; color: gray">/ month</span>
+                </div>
+                <ul class="mb-6 text-center">
+                  <li class="mb-2">Up to 250 Timesheets / month</li>
+                  <li class="mb-2">€0.60 per extra sheet</li>
+                  <li class="mb-2">Priority Support</li>
+                </ul>
+                <p class="text-sm text-gray-600 mb-4 text-center">
+                  Replaces ~60 hours of admin work.
+                </p>
+                <a
+                  href="https://app.timesheetflow.com"
+                  class="btn-hover w-full bg-[#09abe7] text-white py-3 rounded-lg font-semibold hover:bg-[#2c4e9b] transition flex items-center justify-center"
+                  style="text-decoration: none"
+                >
+                  <i class="fas fa-arrow-right mr-2"></i>Start Free Trial
+                </a>
+              </div>
             </div>
           </div>
           <div class="bg-white rounded-lg shadow-lg overflow-hidden">
             <div class="px-6 py-8">
-              <h4 class="text-2xl font-bold text-center mb-4">
-                Enterprise / Large Teams
-              </h4>
+              <h4 class="text-2xl font-bold text-center mb-4">Business</h4>
+              <p class="text-gray-600 mb-4 text-center">
+                Compliance and reliability for high-volume agencies.
+              </p>
               <div class="text-center mb-6">
-                <span class="text-4xl font-bold">Custom Pricing</span>
+                <span class="text-4xl font-bold">€449</span
+                ><span style="font-size: 0.8em; color: gray">/ month</span>
               </div>
               <ul class="mb-6 text-center">
-                <li class="flex items-center justify-center mb-2">
-                  <i class="fas fa-check text-green-600 mr-2"></i>Unlimited
-                  Timesheet Processing
-                </li>
-                <li class="flex items-center justify-center mb-2">
-                  <i class="fas fa-check text-green-600 mr-2"></i>All Formats +
-                  Custom Integrations
-                </li>
-                <li class="flex items-center justify-center mb-2">
-                  <i class="fas fa-check text-green-600 mr-2"></i>Dedicated
-                  Account Manager
-                </li>
-                <li class="flex items-center justify-center mb-2">
-                  <i class="fas fa-check text-green-600 mr-2"></i>Priority
-                  Support & API Access
-                </li>
+                <li class="mb-2">Up to 1,000 Timesheets / month</li>
+                <li class="mb-2">€0.45 per extra sheet</li>
+                <li class="mb-2">Audit Logs & History</li>
               </ul>
-              <button
-                class="btn-hover w-full bg-[#09abe7] text-white py-3 rounded-lg font-semibold hover:bg-[#2c4e9b] transition"
+              <p class="text-sm text-gray-600 mb-4 text-center">
+                Replaces a part-time employee.
+              </p>
+              <a
+                href="https://app.timesheetflow.com"
+                class="btn-hover w-full bg-[#09abe7] text-white py-3 rounded-lg font-semibold hover:bg-[#2c4e9b] transition flex items-center justify-center"
+                style="text-decoration: none"
               >
-                <i class="fas fa-envelope mr-2"></i>Contact Sales
-              </button>
+                <i class="fas fa-arrow-right mr-2"></i>Start Free Trial
+              </a>
             </div>
           </div>
         </div>
@@ -293,14 +320,6 @@
           role="button"
         >
           <i class="fas fa-envelope mr-2"></i>Email Us
-        </a>
-        <a
-          href="https://www.linkedin.com/in/chrisdeguara/"
-          target="_blank"
-          aria-label="LinkedIn"
-          class="btn-hover bg-[#2c4e9b] text-white px-8 py-3 rounded-full font-semibold transition inline-flex items-center linkedin-contact"
-        >
-          <i class="fab fa-linkedin mr-2"></i>LinkedIn
         </a>
       </div>
     </section>

@@ -1,23 +1,3 @@
-// Stripe Checkout - Using popup for new window
-const checkoutButton = document.getElementById("checkout-button");
-const heroCheckoutButton = document.getElementById("hero-checkout-button");
-
-checkoutButton.addEventListener("click", () => {
-  window.open(
-    "https://buy.stripe.com/test_9B6aEX8zo03o7Uw3WTeIw00",
-    "stripeCheckout",
-    "width=800,height=600"
-  );
-});
-
-heroCheckoutButton.addEventListener("click", () => {
-  window.open(
-    "https://buy.stripe.com/test_9B6aEX8zo03o7Uw3WTeIw00",
-    "stripeCheckout",
-    "width=800,height=600"
-  );
-});
-
 // Header shrink on scroll and dynamic body padding
 function updateHeaderAndBodyPadding() {
   const header = document.getElementById("header");
