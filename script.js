@@ -81,59 +81,52 @@ document.addEventListener("DOMContentLoaded", function () {
   const cookiePopup = document.getElementById("cookie-popup");
   const cookieAgreeBtn = document.getElementById("cookie-agree");
   const cookieDeclineBtn = document.getElementById("cookie-decline");
-  const subscribeForm = document.getElementById("subscribe-form");
+
+  // Helper functions for cookies
+  function setCookie(name, value, days) {
+    const d = new Date();
+    d.setTime(d.getTime() + (days * 24 * 60 * 60 * 1000));
+    document.cookie = name + "=" + value + ";expires=" + d.toUTCString() + ";path=/";
+  }
+
+  function getCookie(name) {
+    const cname = name + "=";
+    const decodedCookie = decodeURIComponent(document.cookie);
+    const ca = decodedCookie.split(';');
+    for (let i = 0; i < ca.length; i++) {
+      let c = ca[i];
+      while (c.charAt(0) == ' ') {
+        c = c.substring(1);
+      }
+      if (c.indexOf(cname) == 0) {
+        return c.substring(cname.length, c.length);
+      }
+    }
+    return "";
+  }
 
   // Check if user has already made a choice
-  const consentChoice = localStorage.getItem("cookieConsent");
-  if (!consentChoice) {
+  const consentChoice = getCookie("cookieConsent");
+  if (consentChoice === "declined") {
+    // Remove the join us section
+    const joinUs = document.getElementById("join-us");
+    if (joinUs) joinUs.remove();
+  } else if (!consentChoice) {
     cookiePopup.classList.remove("hidden");
-  } else if (consentChoice === "declined") {
-    // If previously declined, disable form features that might set cookies
-    if (subscribeForm) {
-      subscribeForm.style.opacity = "0.5";
-      subscribeForm.style.pointerEvents = "none";
-      const formMessage = document.createElement("p");
-      formMessage.textContent =
-        "Newsletter subscription requires cookie consent.";
-      formMessage.style.color = "#666";
-      formMessage.style.fontSize = "0.875rem";
-      formMessage.style.textAlign = "center";
-      formMessage.style.marginTop = "0.5rem";
-      subscribeForm.appendChild(formMessage);
-    }
   }
 
   // Handle agree button click
   cookieAgreeBtn.addEventListener("click", function () {
-    localStorage.setItem("cookieConsent", "accepted");
+    setCookie("cookieConsent", "accepted", 365);
     cookiePopup.classList.add("hidden");
-    // Re-enable form if it was disabled
-    if (subscribeForm) {
-      subscribeForm.style.opacity = "1";
-      subscribeForm.style.pointerEvents = "auto";
-      const message = subscribeForm.querySelector("p");
-      if (message && message.textContent.includes("requires cookie consent")) {
-        message.remove();
-      }
-    }
   });
 
   // Handle decline button click
   cookieDeclineBtn.addEventListener("click", function () {
-    localStorage.setItem("cookieConsent", "declined");
+    setCookie("cookieConsent", "declined", 365);
     cookiePopup.classList.add("hidden");
-    // Disable form features that might set cookies
-    if (subscribeForm) {
-      subscribeForm.style.opacity = "0.5";
-      subscribeForm.style.pointerEvents = "none";
-      const formMessage = document.createElement("p");
-      formMessage.textContent =
-        "Newsletter subscription requires cookie consent.";
-      formMessage.style.color = "#666";
-      formMessage.style.fontSize = "0.875rem";
-      formMessage.style.textAlign = "center";
-      formMessage.style.marginTop = "0.5rem";
-      subscribeForm.appendChild(formMessage);
-    }
+    // Remove the join us section
+    const joinUs = document.getElementById("join-us");
+    if (joinUs) joinUs.remove();
   });
 });
