@@ -75,3 +75,65 @@ if (menuToggle && navMenu) {
     }
   });
 }
+
+// Cookie consent popup
+document.addEventListener("DOMContentLoaded", function () {
+  const cookiePopup = document.getElementById("cookie-popup");
+  const cookieAgreeBtn = document.getElementById("cookie-agree");
+  const cookieDeclineBtn = document.getElementById("cookie-decline");
+  const subscribeForm = document.getElementById("subscribe-form");
+
+  // Check if user has already made a choice
+  const consentChoice = localStorage.getItem("cookieConsent");
+  if (!consentChoice) {
+    cookiePopup.classList.remove("hidden");
+  } else if (consentChoice === "declined") {
+    // If previously declined, disable form features that might set cookies
+    if (subscribeForm) {
+      subscribeForm.style.opacity = "0.5";
+      subscribeForm.style.pointerEvents = "none";
+      const formMessage = document.createElement("p");
+      formMessage.textContent =
+        "Newsletter subscription requires cookie consent.";
+      formMessage.style.color = "#666";
+      formMessage.style.fontSize = "0.875rem";
+      formMessage.style.textAlign = "center";
+      formMessage.style.marginTop = "0.5rem";
+      subscribeForm.appendChild(formMessage);
+    }
+  }
+
+  // Handle agree button click
+  cookieAgreeBtn.addEventListener("click", function () {
+    localStorage.setItem("cookieConsent", "accepted");
+    cookiePopup.classList.add("hidden");
+    // Re-enable form if it was disabled
+    if (subscribeForm) {
+      subscribeForm.style.opacity = "1";
+      subscribeForm.style.pointerEvents = "auto";
+      const message = subscribeForm.querySelector("p");
+      if (message && message.textContent.includes("requires cookie consent")) {
+        message.remove();
+      }
+    }
+  });
+
+  // Handle decline button click
+  cookieDeclineBtn.addEventListener("click", function () {
+    localStorage.setItem("cookieConsent", "declined");
+    cookiePopup.classList.add("hidden");
+    // Disable form features that might set cookies
+    if (subscribeForm) {
+      subscribeForm.style.opacity = "0.5";
+      subscribeForm.style.pointerEvents = "none";
+      const formMessage = document.createElement("p");
+      formMessage.textContent =
+        "Newsletter subscription requires cookie consent.";
+      formMessage.style.color = "#666";
+      formMessage.style.fontSize = "0.875rem";
+      formMessage.style.textAlign = "center";
+      formMessage.style.marginTop = "0.5rem";
+      subscribeForm.appendChild(formMessage);
+    }
+  });
+});
